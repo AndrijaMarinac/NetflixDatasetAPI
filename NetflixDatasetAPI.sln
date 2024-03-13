@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34622.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetflixDatasetAPI", "NetflixDatasetAPI\NetflixDatasetAPI.csproj", "{3164080D-2D1A-4D67-9B4D-7A829CF17035}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{17C6D085-140B-49D8-9BB4-ED801AB79D15}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3164080D-2D1A-4D67-9B4D-7A829CF17035}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3164080D-2D1A-4D67-9B4D-7A829CF17035}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3164080D-2D1A-4D67-9B4D-7A829CF17035}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3164080D-2D1A-4D67-9B4D-7A829CF17035}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17C6D085-140B-49D8-9BB4-ED801AB79D15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17C6D085-140B-49D8-9BB4-ED801AB79D15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17C6D085-140B-49D8-9BB4-ED801AB79D15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17C6D085-140B-49D8-9BB4-ED801AB79D15}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {470A8BB3-F8CB-4633-84F4-5334D09B77C8}
+	EndGlobalSection
+EndGlobal

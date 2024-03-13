@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  netflixdatasetapi:
+    image: ${DOCKER_REGISTRY-}netflixdatasetapi
+    build:
+      context: .
+      dockerfile: NetflixDatasetAPI/Dockerfile
+  database:
+    image: postgres:latest
+    container_name: postgres_db
+    restart: always
+    environment:
+        - POSTGRES_DB=NetflixDataset
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+    volumes:
+        - ./.containers/database:/var/lib/postgresql/data
+        - ./.containers/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+        - 5432:5432
