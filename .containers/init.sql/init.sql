@@ -152,7 +152,8 @@ BEGIN
 		$1,
 		$2,
 		$3,
-		$4);
+		$4,
+		$5);
 	RETURN FOUND;
 END;
 $body$
@@ -173,7 +174,7 @@ RETURNS BOOLEAN
 AS
 $body$
 BEGIN
-	INSERT INTO SubscriptionDetails(NetflixUserID,SubscriptionType,MonthyRevenue,JoinDate,LastPaymentDate,PlanDurationInDays)
+	INSERT INTO SubscriptionDetails(fk_NetflixUserID,SubscriptionType,MonthyRevenue,JoinDate,LastPaymentDate,PlanDurationInDays)
 	VALUES (
 		$1,
 		$2,
@@ -204,6 +205,20 @@ BEGIN
 	RETURN QUERY
 	SELECT NetflixUserID,Country,Age,Gender,Device,SubscriptionType,MonthyRevenue,JoinDate,LastLoginDate,PlanDurationInDays
 	FROM NetflixUsers JOIN SubscriptionDetails ON NetflixUserID = fk_NetflixUserID;
+END;
+$body$
+LANGUAGE PLPGSQL;
+
+CREATE OR REPLACE FUNCTION fn_CheckNetflixUserId(
+	input_id INT)
+RETURNS BOOLEAN
+AS
+$body$
+BEGIN
+	PERFORM netflixUserId
+	FROM netflixusers
+	WHERE $1 = netflixUserId;
+	RETURN FOUND;
 END;
 $body$
 LANGUAGE PLPGSQL;

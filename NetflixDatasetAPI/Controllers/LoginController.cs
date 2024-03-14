@@ -36,31 +36,16 @@ namespace NetflixDatasetAPI.Controllers
         [HttpGet(Name = "LoginUser")]
         public async Task<IActionResult> LoginUserAsync(string username, string password)
         {
-            User user = new User
-            {
-                Username = username,
-                Password = password,
-            };
-
-            var context = new ValidationContext(user);
-            var results = new List<ValidationResult>();
-            if (!Validator.TryValidateObject(user, context, results, true))
-            {
-                string messages = "";
-                results.ForEach(message => messages += message + "\n");
-                return BadRequest(messages);
-            }
-
             try
             {
-                User resultUser = await LoginService.GetUserAsync(user.Username, user.Password, _configuration);
+                User user = await LoginService.GetUserAsync(username, password, _configuration);
                 if (user.Username != username)
                 {
                     return Unauthorized("Login Failed: username or password is wrong");
                 }
-                var jwtToken = await JwtProvider.GenerateJwtAsync(resultUser, _configuration);
+                var jwtToken = await JwtProvider.GenerateJwtAsync(user, _configuration);
 
-                RefreshToken refreshToken = await RefreshTokenProvider.GenerateRefreshTokenAsync(resultUser, _configuration);
+                RefreshToken refreshToken = await RefreshTokenProvider.GenerateRefreshTokenAsync(user, _configuration);
 
                 var cookieOptions = new CookieOptions
                 {

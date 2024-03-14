@@ -9,12 +9,13 @@ using System.IO;
 
 namespace NetflixDatasetAPI.Controllers
 {
+    [Route("[controller]")]
     [Authorize]
-    public class NetflixUserController : Controller
+    public class UploadDataController : Controller
     {
         private readonly IConfiguration _configuration;
 
-        public NetflixUserController(IConfiguration configuration)
+        public UploadDataController(IConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -29,7 +30,7 @@ namespace NetflixDatasetAPI.Controllers
 
             try
             {
-                bool result = await NetflixUserService.ParseAndUploadCSVAsync(path, _configuration);
+                bool result = await UploadDataService.ParseAndUploadCSVAsync(path, _configuration);
                 if (!result)
                 {
                     throw new Exception("Unable to upload CSV file to database");
