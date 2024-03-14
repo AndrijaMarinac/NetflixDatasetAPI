@@ -203,7 +203,7 @@ AS
 $body$
 BEGIN	
 	RETURN QUERY
-	SELECT NetflixUserID,Country,Age,Gender,Device,SubscriptionType,MonthyRevenue,JoinDate,LastLoginDate,PlanDurationInDays
+	SELECT NetflixUserID,Country,Age,Gender,Device,SubscriptionType,MonthyRevenue,JoinDate,LastPaymentDate,PlanDurationInDays
 	FROM NetflixUsers JOIN SubscriptionDetails ON NetflixUserID = fk_NetflixUserID;
 END;
 $body$
@@ -222,3 +222,5 @@ BEGIN
 END;
 $body$
 LANGUAGE PLPGSQL;
+
+SELECT fn_GetAllNetflixUses()

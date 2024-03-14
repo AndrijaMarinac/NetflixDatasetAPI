@@ -10,6 +10,7 @@ using System.IO;
 namespace NetflixDatasetAPI.Controllers
 {
     [Route("[controller]")]
+    [ApiController]
     [Authorize]
     public class UploadDataController : Controller
     {
@@ -21,7 +22,7 @@ namespace NetflixDatasetAPI.Controllers
         }
 
         [HttpPost(Name = "UploadNetflixUserFromCSV")]
-        public async Task<IActionResult> UploadNetflixUsersToDatabaseFromCSV(string path)
+        public async Task<IActionResult> UploadNetflixUsersToDatabaseFromCSVAsync(string path)
         {
             if (!System.IO.File.Exists(path))
             {
